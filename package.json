@@ -1,0 +1,51 @@
+{
+  "name": "backapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "deploy": "electron-builder --windows nsis:ia32"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-log": "^4.4.8",
+    "express": "^4.18.2",
+    "ip": "^1.1.8",
+    "socket.io": "^4.7.0"
+  },
+  "devDependencies": {
+    "electron": "^25.2.0"
+  },
+  "type": "commonjs",
+  "build": {
+    "productName": "DagyeomRemoteController",
+    "appId": "com.dagyeom.remotecontroller",
+    "asar": true,
+    "protocols": {
+      "name": "DagyeomRemoteController",
+      "schemes": [
+        "DagyeomRemoteController"
+      ]
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ],
+      "icon": "./resources/installer/Icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "buildResources": "./resources/installer/",
+      "output": "./dist/",
+      "app": "."
+    }
+  }
+}

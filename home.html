@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <style>
+    #ipList {
+      display: inline-block;
+      width: 40%;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    #imageContainer {
+      display: inline-block;
+      width: 60%;
+      height: 100vh;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Home</h1>
+  <div style="width : 100%; height : 100%; display: flex; flex-direction: row;">
+    <div id="ipList"></div>
+    <!-- <div id="imageContainer"></div> -->
+    <img style="width : 100%; height : 100%; overflow: auto;"/>
+  </div>
+
+  <script>
+
+    const getIps = () => {
+        
+        // const interfaces = os.networkInterfaces();
+        // const internalAddresses = [];
+
+        // Object.keys(interfaces).forEach((interfaceName) => {
+        //     const addresses = interfaces[interfaceName];
+        //     addresses.forEach((address) => {
+        //         // console.log(address);
+        //         if (address.internal) {
+        //             internalAddresses.push(address.address);
+        //         }
+        //     });
+        // });
+
+        // console.log("getIps : ",internalAddresses);
+        // return internalAddresses;
+        return ["qwr","asd","sddd"]
+    };
+    // getIps 함수를 호출하여 IP 배열을 받아옴
+    const ips = getIps();
+
+    // 왼쪽에 IP 리스트를 보여주는 함수
+    function showIpList() {
+      const ipListContainer = document.getElementById("ipList");
+
+      ips.forEach((ip) => {
+        const ipItem = document.createElement("div");
+        ipItem.textContent = ip;
+        ipItem.addEventListener("click", function() {
+          showImage(ip);
+        });
+
+        ipListContainer.appendChild(ipItem);
+      });
+    }
+
+    const img = document.getElementsByTagName("img")[0];
+    // 오른쪽에 이미지를 보여주는 함수
+    function showImage(ip) {
+    //   const imageContainer = document.getElementById("imageContainer");
+
+    //   // 이미지 태그 생성
+    //   const img = document.createElement("img");
+    //   img.src = `https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2019/11/19/92fe4b88-30b8-47a0-88c8-cfeb96b32201.jpg`; // 이미지 URL 설정
+
+    //   // 기존 이미지 삭제
+    //   while (imageContainer.firstChild) {
+    //     imageContainer.firstChild.remove();
+    //   }
+
+    //   // 이미지 태그 추가
+    //   imageContainer.appendChild(img);
+        img.setAttribute("src", "https://talkimg.imbc.com/TVianUpload/tvian/TViews/image/2019/11/19/92fe4b88-30b8-47a0-88c8-cfeb96b32201.jpg");
+    }
+
+    // 페이지 로드 시 IP 리스트 표시
+    window.addEventListener("load", showIpList);
+  </script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <input type="password" id="passwordInput" placeholder="비밀번호" />
+    <button type="submit">ss</button>
+  </form>
+
+  <script>
+    const { safeStorage } = require("electron");
+    // 로그인 폼 제출 이벤트 핸들러
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // 폼 제출 기본 동작 방지
+
+      var enteredPassword = document.getElementById("passwordInput").value;
+      var storedPassword = localStorage.getItem("password");
+
+      // if (enteredPassword === storedPassword) {
+        // 비밀번호 일치, home.html로 이동
+        window.location.href = "home.html";
+      // } else {
+      //   alert("비밀번호가 일치하지 않습니다.");
+      // }
+    });
+  </script>
+</body>
+</html> -->
